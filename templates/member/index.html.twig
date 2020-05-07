@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}通訊錄 || Symfony{% endblock %}
+
+{% block body %}
+<br />
+  <div class="container">
+        <div class="float-right">
+            <a href="{{ path('member_new') }}" class="btn btn-default" style="border-Radius: 0px;">新增聯絡人</a>
+        </div>
+           <br />
+           <br />
+           <br />
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <table class="table table-striped  table-hover">
+                    <thead>
+                        <tr class="info">
+                            <th width="10%">姓名</th>
+                            <th width="10%">電話</th>
+                            <th width="20%">電子信箱</th>
+                            <th width="30%">地址</th>
+                            <th colspan=2>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in members %}
+                            <tr id="textall">
+                                <td>{{ member.name }}</td>
+                                <td>{{ member.phone }}</td>
+                                <td>{{ member.email }}</td>
+                                <td>{{ member.city }}{{ member.township }}{{ member.postcode }}{{ member.address }}</td>
+                                    {#<a href="{{ path('member_show', {'id': member.id}) }}">show</a>#}
+                                <td>
+                                    <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-warning" style="border-Radius: 0px;">編輯</a>
+                                </td>
+                                <td>
+                                    {{ include('member/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="12">無任何聯絡人資料</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+  </div>
+  
+{% endblock %}

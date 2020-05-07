@@ -1,0 +1,67 @@
+{{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+
+{# 直接套用boostrap表格模板 #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+<div class="container">
+    <div class="col-md-12 col-md-offset-0">
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.name, {'label': "姓名"}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.phone, {'label': '電話'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.email, {'label': '電子信箱'}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.ename, {'label': '英文名'}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.sex, {'label': '性別'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                {{ form_row(form.city, {'label': '居住地'}) }}
+            </div>
+            <div class="col-4">
+                {{ form_row(form.township, {'label': '鄉鎮市區'}) }}
+            </div>
+            <div class="col-4">
+                {{ form_row(form.postcode, {'label': '郵遞區號'}) }}
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col">
+            {{ form_row(form.address, {'label': '詳細地址'}) }}
+        </div>
+        </div>
+        <div class="row">
+            <div class="col" type="text-area">
+            {{ form_row(form.notes, {'label': '備註','type':'textarea'}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <div class=" float-left">
+                    <a href="{{ path('member_index') }}" class="btn btn-info" style="border-Radius: 0px;">返回</a>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class=" float-right">
+                <button class="btn btn-primary  float-right" style="border-Radius: 0px;">{{ button_label|default('確認') }}</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
